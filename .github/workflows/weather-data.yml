@@ -17,11 +17,15 @@ jobs:
             - name: Check out repository
               uses: actions/checkout@v4
 
-            # Step 2: Run weather.sh script.
+            # Step 2: Set up execution permissions.
+            - name: Make file executable
+              run: chmod +x weather.sh
+
+            # Step 3: Run weather.sh script.
             - name: Run weather script
               run: ./weather.sh
 
-            # Step 3: Commit and push the changes
+            # Step 4: Commit and push the changes
             - name: Commit and push changes
               run: |
                 git config --global user.name "github-actions[bot]"
