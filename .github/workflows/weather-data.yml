@@ -2,7 +2,7 @@ name: Download Athenry Weather
 
 on:
     schedule:
-        - cron: "0 10 * * *" # Runs daily at 10am.
+        - cron: "15 20 * * *" # Runs daily at 8.15pm.
     workflow_dispatch: # Allows manual running of workflow.
 
 permissions:
