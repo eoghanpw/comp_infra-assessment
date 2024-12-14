@@ -1,5 +1,5 @@
-# Computer Infrastructure Assessment
+# Computer Infrastructure - Assessment
 
-**by Eoghan Walsh**
+**Author: Eoghan Walsh**
 
 This repository contains the assessment for the Computer Infrastructure module.
