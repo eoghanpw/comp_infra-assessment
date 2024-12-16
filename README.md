@@ -55,7 +55,45 @@ The notebook can be run online instantly using [GitHub Codespaces](https://githu
 
 ## Usage Example
 
+The code snippet below is extracted from the [`weather.ipynb`](./weather.ipynb) notebook and demonstrates how to visualise windspeed data using `matplotlib`.
 
+```python
+# Let's plot the windspeed.
+fig, ax = plt.subplots()
+
+# x variable.
+time = df["dateTime"]
+# y variable.
+wind = df["windSpeed"]
+
+# Format the datetime x axis.
+locator = mdates.AutoDateLocator()
+formatter = mdates.ConciseDateFormatter(locator)
+ax.xaxis.set_major_formatter(formatter)
+ax.xaxis.set_minor_locator(AutoMinorLocator(2))
+fig.autofmt_xdate()
+
+# Set title and axis labels.
+ax.set_title("Athenry Hourly Windspeed")
+ax.set_xlabel("Time")
+ax.set_ylabel("Windspeed (kt)")
+
+# Fill between plot.
+ax.fill_between(time, wind.min(), wind, alpha=0.5)
+
+# Add text box for descriptive stats.
+text = (f"max windspeed: {wind.max():.0f} kt\n"
+        f"min windspeed: {wind.min():.0f} kt\n"
+        f"mean windspeed: {wind.mean():.2f} kt")
+bbox = dict(boxstyle='round', fc=("tab:blue", 0.1), ec=("tab:blue", 0.5))
+x_loc = df["dateTime"].iloc[:1]
+y_loc = 7
+ax.text(x_loc, y_loc, text, bbox=bbox)
+
+# Show plot
+plt.show()
+```
+![windspeed plot](img/windspeed%20plot.png)
 
 ---
 
@@ -64,6 +102,7 @@ The notebook can be run online instantly using [GitHub Codespaces](https://githu
 - [pandas documentation](https://pandas.pydata.org/docs/)
 - [matplotlib documentation](https://matplotlib.org/stable/index.html)
 - [numpy documentation](https://numpy.org/doc/stable/)
+- [seaborn](https://seaborn.pydata.org/tutorial.html)
 - [Bash cheat sheet](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
 - [Cron](https://crontab.guru/examples.html)
 - [GitHub READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
